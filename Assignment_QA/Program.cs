@@ -130,9 +130,10 @@ namespace Assignment_QA
         public bool IsValidNumber(string num)
         {
             bool res =  int.TryParse(num, out int n);
-            if (!res)
+            if (!res || n == 0)
             {
-                Console.WriteLine("Invalid input, please enter number only..");
+                Console.WriteLine("Invalid input, please enter number ( > 0) only..");
+                return false;
             }
             return res;
         }
