@@ -16,30 +16,30 @@ namespace Assignment_QA
         public void Go()
         {
             string type;
-            Console.WriteLine("1. Create default (2*2) rectangle");
+            Console.WriteLine("1. Create default (1*1) rectangle");
             Console.WriteLine("2. Create Custom rectangle");
             do
             {
                 Console.Write("Enter Your choise: ");
                 type = Console.ReadLine();
             } while (!IsvalidType(type));
-            Reactangle reactangle = CreateReactangle(type);
-            Console.WriteLine("Your Reactangle is {0} * {1} Units", reactangle.GetLength(), reactangle.GetWidth());
+            Rectangle rectangle = CreateReactangle(type);
+            Console.WriteLine("Your Rectangle is {0} * {1} Units", rectangle.GetLength(), rectangle.GetWidth());
             string action;
             do
             {
-                Console.WriteLine("1. Get Reactangle Length");
-                Console.WriteLine("2. Set Reactangle Length");
-                Console.WriteLine("3. Get Reactangle Width");
-                Console.WriteLine("4. Set Reactangle Width");
-                Console.WriteLine("5. Get Reactangle Perimeter");
-                Console.WriteLine("6. Get Reactangle Area");
+                Console.WriteLine("1. Get Rectangle Length");
+                Console.WriteLine("2. Set Rectangle Length");
+                Console.WriteLine("3. Get Rectangle Width");
+                Console.WriteLine("4. Set Rectangle Width");
+                Console.WriteLine("5. Get Rectangle Perimeter");
+                Console.WriteLine("6. Get Rectangle Area");
                 Console.WriteLine("7. Exit");
                 Console.Write("Enter action:");
                 action = Console.ReadLine();
                 if (action != "7" && IsValidAction(action))
                 {
-                    PerformAction(action, reactangle);
+                    PerformAction(action, rectangle);
                 }
                  
             } while (action != "7");
@@ -48,12 +48,12 @@ namespace Assignment_QA
             Console.ReadKey();
         }
 
-        private void PerformAction(string action, Reactangle reactangle)
+        private void PerformAction(string action, Rectangle rectangle)
         {
                 switch (action)
                 {
                     case "1":
-                        Console.WriteLine("Length of the Rectangle is: {0}", reactangle.GetLength());
+                        Console.WriteLine("Length of the Rectangle is: {0}", rectangle.GetLength());
                         break;
                     case "2":
                         string length;
@@ -62,10 +62,10 @@ namespace Assignment_QA
                             Console.Write("Enter New Length:");
                             length = Console.ReadLine();
                         } while (!IsValidNumber(length));
-                        Console.WriteLine("New Rectangle Units are: {0} * {1}", reactangle.SetLength(int.Parse(length)),reactangle.GetWidth());
+                        Console.WriteLine("New Rectangle Units are: {0} * {1}", rectangle.SetLength(int.Parse(length)),rectangle.GetWidth());
                         break;
                     case "3":
-                        Console.WriteLine("Width of the Rectangle is: {0}", reactangle.GetWidth());
+                        Console.WriteLine("Width of the Rectangle is: {0}", rectangle.GetWidth());
                         break;
                     case "4":
                         string width;
@@ -74,13 +74,13 @@ namespace Assignment_QA
                             Console.Write("Enter New Width:");
                             width = Console.ReadLine();
                         } while (!IsValidNumber(width));
-                        Console.WriteLine("New Rectangle Units are: {0} * {1}", reactangle.GetLength(), reactangle.SetWidth(int.Parse(width)));
+                        Console.WriteLine("New Rectangle Units are: {0} * {1}", rectangle.GetLength(), rectangle.SetWidth(int.Parse(width)));
                         break;
                     case "5":
-                        Console.WriteLine("Perimeter of the Rectangle is: {0}", reactangle.GetPerimeter());
+                        Console.WriteLine("Perimeter of the Rectangle is: {0}", rectangle.GetPerimeter());
                         break;
                     case "6":
-                        Console.WriteLine("Area of the Rectangle is: {0}", reactangle.GetArea());
+                        Console.WriteLine("Area of the Rectangle is: {0}", rectangle.GetArea());
                         break;
                     default:
                         break;
@@ -103,34 +103,34 @@ namespace Assignment_QA
             return true;
         }
 
-        private Reactangle CreateReactangle(string type)
+        private Rectangle CreateReactangle(string type)
         {
             if (type == "1")
             {
-                return new Reactangle();
+                return new Rectangle();
             }
             else
             {
                 string length;
                 do
                 {
-                    Console.Write("Enter Reactangle Length:");
+                    Console.Write("Enter Rectangle Length:");
                     length = Console.ReadLine();
                 } while (!IsValidNumber(length));
                 string width;
                 do
                 {
-                    Console.Write("Enter Reactangle Width:");
+                    Console.Write("Enter Rectangle Width:");
                     width = Console.ReadLine();
                 } while (!IsValidNumber(width));
-                return new Reactangle(int.Parse(length), int.Parse(width));
+                return new Rectangle(int.Parse(length), int.Parse(width));
             }
         }
 
         public bool IsValidNumber(string num)
         {
             bool res =  int.TryParse(num, out int n);
-            if (!res || n == 0)
+            if (!res || n <= 0)
             {
                 Console.WriteLine("Invalid input, please enter number ( > 0) only..");
                 return false;

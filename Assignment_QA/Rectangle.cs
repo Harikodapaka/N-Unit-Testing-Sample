@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace Assignment_QA
 {
-    public class Reactangle
+    public class Rectangle
     {
         private int length;
         private int width;
 
-        public Reactangle(int length, int width)
+        public Rectangle(int length, int width)
         {
             this.length = length;
             this.width = width;
         }
-        public Reactangle()
+        public Rectangle()
         {
-            length = 2;
-            width = 2;
+            length = 1;
+            width = 1;
         }
 
         public int GetLength()
